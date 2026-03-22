@@ -1,0 +1,8 @@
+.vscode/
+*.o
+*.d
+*.out
+
+ex00/btc
+ex01/exe
+ex02/exe
