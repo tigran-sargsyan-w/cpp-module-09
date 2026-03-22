@@ -106,6 +106,8 @@ void	BitcoinExchange::loadDatabase(const std::string &filename)
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
 	std::getline(file, line);
+	if (line != "date,exchange_rate")
+		throw std::runtime_error("Error: invalid database header.");
 	while (std::getline(file, line))
 	{
 		commaPos = line.find(',');
@@ -151,6 +153,8 @@ void	BitcoinExchange::processInputFile(const std::string &filename) const
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
 	std::getline(file, line);
+	if (line != "date | value")
+		throw std::runtime_error("Error: invalid input header.");
 	while (std::getline(file, line))
 	{
 		pipePos = line.find('|');
