@@ -5,13 +5,9 @@
 #include <sstream>
 #include <stdexcept>
 
-BitcoinExchange::BitcoinExchange()
-{
-}
+BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) : rates(other.rates)
-{
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) : rates(other.rates) {}
 
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 {
@@ -20,9 +16,7 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 	return (*this);
 }
 
-BitcoinExchange::~BitcoinExchange()
-{
-}
+BitcoinExchange::~BitcoinExchange() {}
 
 std::string	BitcoinExchange::trim(const std::string &text) const
 {
