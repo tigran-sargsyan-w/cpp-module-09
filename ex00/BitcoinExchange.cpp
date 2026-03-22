@@ -119,12 +119,16 @@ void	BitcoinExchange::loadDatabase(const std::string &filename)
 			continue;
 		rates[date] = value;
 	}
+	if (rates.empty())
+		throw std::runtime_error("Error: database is empty.");
 }
 
 double	BitcoinExchange::getRateForDate(const std::string &date) const
 {
 	std::map<std::string, double>::const_iterator	it;
 
+	if (rates.empty())
+		throw std::runtime_error("Error: database is empty.");
 	it = rates.lower_bound(date);
 	if (it != rates.end() && it->first == date)
 		return (it->second);
