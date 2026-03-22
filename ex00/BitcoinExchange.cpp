@@ -32,22 +32,6 @@ std::string	BitcoinExchange::trim(const std::string &text) const
 	return (text.substr(start, end - start));
 }
 
-bool	BitcoinExchange::isDigits(const std::string &text) const
-{
-	std::string::size_type	index;
-
-	if (text.empty())
-		return (false);
-	index = 0;
-	while (index < text.length())
-	{
-		if (!std::isdigit(text[index]))
-			return (false);
-		index++;
-	}
-	return (true);
-}
-
 bool	BitcoinExchange::isLeapYear(int year) const
 {
 	if (year % 400 == 0)

@@ -12,7 +12,6 @@ class BitcoinExchange
 		bool	isLeapYear(int year) const;
 		bool	isValidDate(const std::string &date) const;
 		bool	isValidValue(const std::string &valueText, double &value) const;
-		bool	isDigits(const std::string &text) const;
 		std::string	trim(const std::string &text) const;
 		double	getRateForDate(const std::string &date) const;
 
