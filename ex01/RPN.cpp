@@ -3,13 +3,9 @@
 #include <stdexcept>
 #include <cctype>
 
-RPN::RPN()
-{
-}
+RPN::RPN() {}
 
-RPN::RPN(const RPN& other) : numbers(other.numbers)
-{
-}
+RPN::RPN(const RPN& other) : numbers(other.numbers) {}
 
 RPN&	RPN::operator=(const RPN& other)
 {
@@ -18,9 +14,7 @@ RPN&	RPN::operator=(const RPN& other)
 	return (*this);
 }
 
-RPN::~RPN()
-{
-}
+RPN::~RPN() {}
 
 bool	RPN::isOperator(const std::string& token) const
 {
