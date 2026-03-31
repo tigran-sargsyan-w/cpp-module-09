@@ -15,6 +15,13 @@ printLine() {
 	printf '%s\n' "------------------------------------------------------------"
 }
 
+printTitle() {
+	echo
+	echo -e "${blue}============================================================${nc}"
+	echo -e "${blue}$1${nc}"
+	echo -e "${blue}============================================================${nc}"
+}
+
 printCaseResult() {
 	local status="$1"
 	local title="$2"
@@ -28,9 +35,9 @@ printCaseResult() {
 
 	printLine
 	if [ "$status" = "OK" ]; then
-		printf "${green}%s${nc} %s\n" "$status" "$title"
+		printf "${green}[OK]${nc} %s\n" "$title"
 	else
-		printf "${red}%s${nc} %s\n" "$status" "$title"
+		printf "${red}[KO]${nc} %s\n" "$title"
 	fi
 	printf "input:         [%s]\n" "$input"
 	printf "expected out:  [%s]\n" "$expectedOut"
@@ -117,7 +124,8 @@ runCaseArgs() {
 	fi
 }
 
-printf "${blue}Checking executable...${nc}\n"
+printTitle "Checking executable"
+
 if [ ! -e "$prog" ]; then
 	printf "${red}Error:${nc} file %s not found\n" "$prog"
 	exit 1
@@ -128,8 +136,9 @@ if [ ! -x "$prog" ]; then
 	exit 1
 fi
 
-printLine
-printf "${yellow}VALID TESTS${nc}\n"
+printf "${green}Found executable:${nc} %s\n" "$prog"
+
+printTitle "VALID TESTS"
 
 runCase "subject example" "8 9 * 9 - 9 - 9 - 4 - 1 +" "42" "" 0
 runCase "simple addition" "1 2 +" "3" "" 0
@@ -141,8 +150,7 @@ runCase "zero result" "1 2 * 2 / 2 * 2 4 - +" "0" "" 0
 runCase "single digit alone" "7" "7" "" 0
 runCase "negative result" "2 9 -" "-7" "" 0
 
-printLine
-printf "${yellow}INVALID TESTS${nc}\n"
+printTitle "INVALID TESTS"
 
 runCase "no argument" "" "" "Error" 1
 runCase "empty string argument" " " "" "Error" 1
@@ -159,14 +167,15 @@ runCase "only numbers" "1 2" "" "Error" 1
 runCase "operator first" "* 2 3" "" "Error" 1
 runCase "long invalid expression" "8 9 * 9 - x - 4 - 1 +" "" "Error" 1
 
-printLine
-printf "${yellow}ARGUMENT COUNT TESTS${nc}\n"
+printTitle "ARGUMENT COUNT TESTS"
 
 runCaseArgs "too many arguments" "" "Error" 1 "1 2 +" "3 4 +"
 
-printLine
-printf "${blue}RESULT:${nc} total=%d passed=%d failed=%d\n" "$total" "$passed" "$failed"
-printLine
+printTitle "SUMMARY"
+
+printf "Total:  %d\n" "$total"
+printf "Passed: ${green}%d${nc}\n" "$passed"
+printf "Failed: ${red}%d${nc}\n" "$failed"
 
 if [ "$failed" -ne 0 ]; then
 	exit 1
