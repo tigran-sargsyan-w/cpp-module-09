@@ -1,8 +1,6 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe()
-{
-}
+PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(char **argv)
 {
@@ -24,9 +22,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 	return (*this);
 }
 
-PmergeMe::~PmergeMe()
-{
-}
+PmergeMe::~PmergeMe() {}
 
 int	PmergeMe::parsePositiveInt(const std::string &text)
 {
@@ -92,10 +88,7 @@ void	PmergeMe::printAfter(const std::vector<int> &sorted) const
 	std::cout << std::endl;
 }
 
-int	PmergeMe::lowerBoundVector(
-	const std::vector<int> &chain,
-	int end,
-	int value)
+int	PmergeMe::lowerBoundVector(const std::vector<int> &chain, int end, int value)
 {
 	int	left;
 	int	right;
@@ -114,10 +107,7 @@ int	PmergeMe::lowerBoundVector(
 	return (left);
 }
 
-int	PmergeMe::lowerBoundDeque(
-	const std::deque<int> &chain,
-	int end,
-	int value)
+int	PmergeMe::lowerBoundDeque(const std::deque<int> &chain, int end, int value)
 {
 	int	left;
 	int	right;
@@ -136,9 +126,7 @@ int	PmergeMe::lowerBoundDeque(
 	return (left);
 }
 
-int	PmergeMe::findPositionVector(
-	const std::vector<int> &chain,
-	int value)
+int	PmergeMe::findPositionVector(const std::vector<int> &chain, int value)
 {
 	std::size_t	index;
 
@@ -152,9 +140,7 @@ int	PmergeMe::findPositionVector(
 	return (-1);
 }
 
-int	PmergeMe::findPositionDeque(
-	const std::deque<int> &chain,
-	int value)
+int	PmergeMe::findPositionDeque(const std::deque<int> &chain, int value)
 {
 	std::size_t	index;
 
@@ -168,10 +154,7 @@ int	PmergeMe::findPositionDeque(
 	return (-1);
 }
 
-std::vector<PmergeMe::PairVec>	PmergeMe::makePairsVector(
-	const std::vector<int> &data,
-	bool &hasOdd,
-	int &oddValue)
+std::vector<PmergeMe::PairVec>	PmergeMe::makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue)
 {
 	std::vector<PairVec>	pairs;
 	PairVec			pair;
@@ -203,10 +186,7 @@ std::vector<PmergeMe::PairVec>	PmergeMe::makePairsVector(
 	return (pairs);
 }
 
-std::deque<PmergeMe::PairDeq>	PmergeMe::makePairsDeque(
-	const std::deque<int> &data,
-	bool &hasOdd,
-	int &oddValue)
+std::deque<PmergeMe::PairDeq>	PmergeMe::makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue)
 {
 	std::deque<PairDeq>	pairs;
 	PairDeq			pair;
@@ -238,8 +218,7 @@ std::deque<PmergeMe::PairDeq>	PmergeMe::makePairsDeque(
 	return (pairs);
 }
 
-std::vector<PmergeMe::PairVec>	PmergeMe::sortPairsVector(
-	const std::vector<PairVec> &pairs)
+std::vector<PmergeMe::PairVec>	PmergeMe::sortPairsVector(const std::vector<PairVec> &pairs)
 {
 	std::vector<PairVec>	left;
 	std::vector<PairVec>	right;
@@ -293,8 +272,7 @@ std::vector<PmergeMe::PairVec>	PmergeMe::sortPairsVector(
 	return (result);
 }
 
-std::deque<PmergeMe::PairDeq>	PmergeMe::sortPairsDeque(
-	const std::deque<PairDeq> &pairs)
+std::deque<PmergeMe::PairDeq>	PmergeMe::sortPairsDeque(const std::deque<PairDeq> &pairs)
 {
 	std::deque<PairDeq>	left;
 	std::deque<PairDeq>	right;
