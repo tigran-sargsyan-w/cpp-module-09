@@ -26,9 +26,9 @@ PmergeMe::~PmergeMe() {}
 
 int	PmergeMe::parsePositiveInt(const std::string &text)
 {
-	long			value;
-	std::stringstream	stream;
-	char			extra;
+	long value;
+	char extra;
+	std::stringstream stream;
 
 	if (text.empty())
 		throw std::runtime_error("Error");
@@ -156,9 +156,9 @@ int	PmergeMe::findPositionDeque(const std::deque<int> &chain, int value)
 
 std::vector<PmergeMe::PairVec>	PmergeMe::makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue)
 {
-	std::vector<PairVec>	pairs;
-	PairVec			pair;
-	std::size_t		index;
+	std::vector<PairVec> pairs;
+	PairVec	pair;
+	std::size_t	index;
 
 	hasOdd = false;
 	oddValue = 0;
@@ -189,8 +189,8 @@ std::vector<PmergeMe::PairVec>	PmergeMe::makePairsVector(const std::vector<int> 
 std::deque<PmergeMe::PairDeq>	PmergeMe::makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue)
 {
 	std::deque<PairDeq>	pairs;
-	PairDeq			pair;
-	std::size_t		index;
+	PairDeq	pair;
+	std::size_t	index;
 
 	hasOdd = false;
 	oddValue = 0;
@@ -220,13 +220,13 @@ std::deque<PmergeMe::PairDeq>	PmergeMe::makePairsDeque(const std::deque<int> &da
 
 std::vector<PmergeMe::PairVec>	PmergeMe::sortPairsVector(const std::vector<PairVec> &pairs)
 {
-	std::vector<PairVec>	left;
-	std::vector<PairVec>	right;
-	std::vector<PairVec>	result;
-	std::size_t		mid;
-	std::size_t		index;
-	std::size_t		leftIndex;
-	std::size_t		rightIndex;
+	std::vector<PairVec> left;
+	std::vector<PairVec> right;
+	std::vector<PairVec> result;
+	std::size_t	mid;
+	std::size_t	index;
+	std::size_t	leftIndex;
+	std::size_t	rightIndex;
 
 	if (pairs.size() <= 1)
 		return (pairs);
@@ -277,10 +277,10 @@ std::deque<PmergeMe::PairDeq>	PmergeMe::sortPairsDeque(const std::deque<PairDeq>
 	std::deque<PairDeq>	left;
 	std::deque<PairDeq>	right;
 	std::deque<PairDeq>	result;
-	std::size_t		mid;
-	std::size_t		index;
-	std::size_t		leftIndex;
-	std::size_t		rightIndex;
+	std::size_t	mid;
+	std::size_t	index;
+	std::size_t	leftIndex;
+	std::size_t	rightIndex;
 
 	if (pairs.size() <= 1)
 		return (pairs);
@@ -328,13 +328,13 @@ std::deque<PmergeMe::PairDeq>	PmergeMe::sortPairsDeque(const std::deque<PairDeq>
 
 std::vector<int>	PmergeMe::buildInsertionOrderVector(int lastIndex)
 {
-	std::vector<int>	order;
-	std::vector<int>	jacob;
-	int			next;
-	int			groupStart;
-	int			groupEnd;
-	int			value;
-	std::size_t		index;
+	std::vector<int> order;
+	std::vector<int> jacob;
+	int	next;
+	int	groupStart;
+	int	groupEnd;
+	int	value;
+	std::size_t	index;
 
 	if (lastIndex < 1)
 		return (order);
@@ -377,11 +377,11 @@ std::deque<int>	PmergeMe::buildInsertionOrderDeque(int lastIndex)
 {
 	std::deque<int>	order;
 	std::deque<int>	jacob;
-	int			next;
-	int			groupStart;
-	int			groupEnd;
-	int			value;
-	std::size_t		index;
+	int	next;
+	int	groupStart;
+	int	groupEnd;
+	int	value;
+	std::size_t	index;
 
 	if (lastIndex < 1)
 		return (order);
@@ -422,16 +422,16 @@ std::deque<int>	PmergeMe::buildInsertionOrderDeque(int lastIndex)
 
 std::vector<int>	PmergeMe::fordJohnsonVector(const std::vector<int> &data)
 {
-	std::vector<PairVec>	pairs;
-	std::vector<int>	order;
-	std::vector<int>	chain;
-	bool			hasOdd;
-	int			oddValue;
-	int			lastIndex;
-	std::size_t		index;
-	int			pairIndex;
-	int			bigPos;
-	int			insertPos;
+	std::vector<PairVec> pairs;
+	std::vector<int> order;
+	std::vector<int> chain;
+	bool hasOdd;
+	int	oddValue;
+	int	lastIndex;
+	std::size_t	index;
+	int	pairIndex;
+	int	bigPos;
+	int	insertPos;
 
 	if (data.size() <= 1)
 		return (data);
@@ -472,15 +472,15 @@ std::vector<int>	PmergeMe::fordJohnsonVector(const std::vector<int> &data)
 std::deque<int>	PmergeMe::fordJohnsonDeque(const std::deque<int> &data)
 {
 	std::deque<PairDeq>	pairs;
-	std::deque<int>		order;
-	std::deque<int>		chain;
-	bool			hasOdd;
-	int			oddValue;
-	int			lastIndex;
-	std::size_t		index;
-	int			pairIndex;
-	int			bigPos;
-	int			insertPos;
+	std::deque<int>	order;
+	std::deque<int>	chain;
+	bool hasOdd;
+	int	oddValue;
+	int	lastIndex;
+	std::size_t	index;
+	int	pairIndex;
+	int	bigPos;
+	int	insertPos;
 
 	if (data.size() <= 1)
 		return (data);
