@@ -552,14 +552,14 @@ bool	PmergeMe::isSortedDeque(const std::deque<int> &data) const
 
 void	PmergeMe::process(void)
 {
-	std::vector<int>	sortedVector;
-	std::deque<int>		sortedDeque;
-	clock_t			startVec;
-	clock_t			endVec;
-	clock_t			startDeq;
-	clock_t			endDeq;
-	double			timeVec;
-	double			timeDeq;
+	std::vector<int> sortedVector;
+	std::deque<int>	sortedDeque;
+	clock_t	startVec;
+	clock_t	endVec;
+	clock_t	startDeq;
+	clock_t	endDeq;
+	double timeVec;
+	double timeDeq;
 
 	printBefore();
 	startVec = clock();
