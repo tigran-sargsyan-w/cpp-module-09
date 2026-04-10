@@ -41,7 +41,7 @@ int	PmergeMe::parsePositiveInt(const std::string &text)
 	return (static_cast<int>(value));
 }
 
-void	PmergeMe::parseInput(char **argv)
+void PmergeMe::parseInput(char **argv)
 {
 	int	value;
 	int	index;
@@ -56,7 +56,7 @@ void	PmergeMe::parseInput(char **argv)
 	}
 }
 
-void	PmergeMe::printBefore(void) const
+void PmergeMe::printBefore(void) const
 {
 	std::size_t	index;
 
@@ -72,7 +72,7 @@ void	PmergeMe::printBefore(void) const
 	std::cout << std::endl;
 }
 
-void	PmergeMe::printAfter(const std::vector<int> &sorted) const
+void PmergeMe::printAfter(const std::vector<int> &sorted) const
 {
 	std::size_t	index;
 
@@ -154,10 +154,10 @@ int	PmergeMe::findPositionDeque(const std::deque<int> &chain, int value)
 	return (-1);
 }
 
-std::vector<PmergeMe::Pair>	PmergeMe::makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue)
+std::vector<PmergeMe::Pair> PmergeMe::makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue)
 {
 	std::vector<Pair> pairs;
-	Pair	pair;
+	Pair pair;
 	std::size_t	index;
 
 	hasOdd = false;
@@ -186,10 +186,10 @@ std::vector<PmergeMe::Pair>	PmergeMe::makePairsVector(const std::vector<int> &da
 	return (pairs);
 }
 
-std::deque<PmergeMe::Pair>	PmergeMe::makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue)
+std::deque<PmergeMe::Pair> PmergeMe::makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue)
 {
-	std::deque<Pair>	pairs;
-	Pair	pair;
+	std::deque<Pair> pairs;
+	Pair pair;
 	std::size_t	index;
 
 	hasOdd = false;
@@ -218,7 +218,7 @@ std::deque<PmergeMe::Pair>	PmergeMe::makePairsDeque(const std::deque<int> &data,
 	return (pairs);
 }
 
-std::vector<PmergeMe::Pair>	PmergeMe::sortPairsVector(const std::vector<Pair> &pairs)
+std::vector<PmergeMe::Pair> PmergeMe::sortPairsVector(const std::vector<Pair> &pairs)
 {
 	std::vector<Pair> left;
 	std::vector<Pair> right;
@@ -272,11 +272,11 @@ std::vector<PmergeMe::Pair>	PmergeMe::sortPairsVector(const std::vector<Pair> &p
 	return (result);
 }
 
-std::deque<PmergeMe::Pair>	PmergeMe::sortPairsDeque(const std::deque<Pair> &pairs)
+std::deque<PmergeMe::Pair> PmergeMe::sortPairsDeque(const std::deque<Pair> &pairs)
 {
-	std::deque<Pair>	left;
-	std::deque<Pair>	right;
-	std::deque<Pair>	result;
+	std::deque<Pair> left;
+	std::deque<Pair> right;
+	std::deque<Pair> result;
 	std::size_t	mid;
 	std::size_t	index;
 	std::size_t	leftIndex;
@@ -326,7 +326,7 @@ std::deque<PmergeMe::Pair>	PmergeMe::sortPairsDeque(const std::deque<Pair> &pair
 	return (result);
 }
 
-std::vector<int>	PmergeMe::buildInsertionOrderVector(int lastIndex)
+std::vector<int> PmergeMe::buildInsertionOrderVector(int lastIndex)
 {
 	std::vector<int> order;
 	std::vector<int> jacob;
@@ -420,7 +420,7 @@ std::deque<int>	PmergeMe::buildInsertionOrderDeque(int lastIndex)
 	return (order);
 }
 
-std::vector<int>	PmergeMe::fordJohnsonVector(const std::vector<int> &data)
+std::vector<int> PmergeMe::fordJohnsonVector(const std::vector<int> &data)
 {
 	std::vector<Pair> pairs;
 	std::vector<int> order;
@@ -471,7 +471,7 @@ std::vector<int>	PmergeMe::fordJohnsonVector(const std::vector<int> &data)
 
 std::deque<int>	PmergeMe::fordJohnsonDeque(const std::deque<int> &data)
 {
-	std::deque<Pair>	pairs;
+	std::deque<Pair> pairs;
 	std::deque<int>	order;
 	std::deque<int>	chain;
 	bool hasOdd;
@@ -518,7 +518,7 @@ std::deque<int>	PmergeMe::fordJohnsonDeque(const std::deque<int> &data)
 	return (chain);
 }
 
-bool	PmergeMe::isSortedVector(const std::vector<int> &data) const
+bool PmergeMe::isSortedVector(const std::vector<int> &data) const
 {
 	std::size_t	index;
 
@@ -534,7 +534,7 @@ bool	PmergeMe::isSortedVector(const std::vector<int> &data) const
 	return (true);
 }
 
-bool	PmergeMe::isSortedDeque(const std::deque<int> &data) const
+bool PmergeMe::isSortedDeque(const std::deque<int> &data) const
 {
 	std::size_t	index;
 
@@ -550,7 +550,7 @@ bool	PmergeMe::isSortedDeque(const std::deque<int> &data) const
 	return (true);
 }
 
-void	PmergeMe::process(void)
+void PmergeMe::process(void)
 {
 	std::vector<int> sortedVector;
 	std::deque<int>	sortedDeque;
