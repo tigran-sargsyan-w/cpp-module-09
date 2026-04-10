@@ -1,5 +1,11 @@
 #include "PmergeMe.hpp"
 
+/**
+ * @brief Entry point for the PmergeMe program.
+ * @param argc Number of command-line arguments.
+ * @param argv Command-line argument values.
+ * @return Exit status code.
+ */
 int	main(int argc, char **argv)
 {
 	try
