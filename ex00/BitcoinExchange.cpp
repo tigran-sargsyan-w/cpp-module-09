@@ -5,10 +5,22 @@
 #include <sstream>
 #include <stdexcept>
 
+/**
+ * @brief Constructs an empty BitcoinExchange object.
+ */
 BitcoinExchange::BitcoinExchange() {}
 
+/**
+ * @brief Copy-constructs a BitcoinExchange object.
+ * @param other Source object to copy from.
+ */
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) : rates(other.rates) {}
 
+/**
+ * @brief Assigns exchange rate data from another object.
+ * @param other Source object to assign from.
+ * @return Reference to this object.
+ */
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 {
 	if (this != &other)
@@ -16,8 +28,16 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 	return (*this);
 }
 
+/**
+ * @brief Destroys the BitcoinExchange object.
+ */
 BitcoinExchange::~BitcoinExchange() {}
 
+/**
+ * @brief Removes leading and trailing whitespace from a string.
+ * @param text Input string to trim.
+ * @return Trimmed string.
+ */
 std::string	BitcoinExchange::trim(const std::string &text) const
 {
 	std::string::size_type	start;
@@ -32,6 +52,11 @@ std::string	BitcoinExchange::trim(const std::string &text) const
 	return (text.substr(start, end - start));
 }
 
+/**
+ * @brief Checks whether a year is leap.
+ * @param year Year value.
+ * @return True if leap year, otherwise false.
+ */
 bool	BitcoinExchange::isLeapYear(int year) const
 {
 	if (year % 400 == 0)
@@ -41,6 +66,11 @@ bool	BitcoinExchange::isLeapYear(int year) const
 	return (year % 4 == 0);
 }
 
+/**
+ * @brief Validates a date string in YYYY-MM-DD format.
+ * @param date Date string to validate.
+ * @return True if date is valid, otherwise false.
+ */
 bool	BitcoinExchange::isValidDate(const std::string &date) const
 {
 	int					year;
@@ -80,6 +110,12 @@ bool	BitcoinExchange::isValidDate(const std::string &date) const
 	return (true);
 }
 
+/**
+ * @brief Parses and validates a numeric value string.
+ * @param valueText Text containing the value.
+ * @param value Parsed output value.
+ * @return True if parsing succeeded, otherwise false.
+ */
 bool	BitcoinExchange::isValidValue(const std::string &valueText, double &value) const
 {
 	char		*end;
@@ -94,6 +130,10 @@ bool	BitcoinExchange::isValidValue(const std::string &valueText, double &value) 
 	return (true);
 }
 
+/**
+ * @brief Loads exchange rates from a CSV database file.
+ * @param filename Path to the database file.
+ */
 void	BitcoinExchange::loadDatabase(const std::string &filename)
 {
 	std::ifstream		file(filename.c_str());
@@ -125,6 +165,11 @@ void	BitcoinExchange::loadDatabase(const std::string &filename)
 		throw std::runtime_error("Error: database is empty.");
 }
 
+/**
+ * @brief Returns the closest exchange rate for a given date.
+ * @param date Date key to search for.
+ * @return Exchange rate for the exact date or closest previous date.
+ */
 double	BitcoinExchange::getRateForDate(const std::string &date) const
 {
 	std::map<std::string, double>::const_iterator	it;
@@ -140,6 +185,10 @@ double	BitcoinExchange::getRateForDate(const std::string &date) const
 	return (it->second);
 }
 
+/**
+ * @brief Processes an input file and prints converted values.
+ * @param filename Path to the input file.
+ */
 void	BitcoinExchange::processInputFile(const std::string &filename) const
 {
 	std::ifstream			file(filename.c_str());
