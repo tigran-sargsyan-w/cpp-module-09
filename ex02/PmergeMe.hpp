@@ -13,13 +13,7 @@
 class PmergeMe
 {
   private:
-	struct	PairVec
-	{
-		int	small;
-		int	big;
-	};
-
-	struct	PairDeq
+	struct	Pair
 	{
 		int	small;
 		int	big;
@@ -47,11 +41,11 @@ class PmergeMe
 	std::vector<int> fordJohnsonVector(const std::vector<int> &data);
 	std::deque<int> fordJohnsonDeque(const std::deque<int> &data);
 
-	std::vector<PairVec> makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue);
-	std::deque<PairDeq> makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue);
+	std::vector<Pair> makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue);
+	std::deque<Pair> makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue);
 
-	std::vector<PairVec> sortPairsVector(const std::vector<PairVec> &pairs);
-	std::deque<PairDeq> sortPairsDeque(const std::deque<PairDeq> &pairs);
+	std::vector<Pair> sortPairsVector(const std::vector<Pair> &pairs);
+	std::deque<Pair> sortPairsDeque(const std::deque<Pair> &pairs);
 
 	std::vector<int> buildInsertionOrderVector(int lastIndex);
 	std::deque<int> buildInsertionOrderDeque(int lastIndex);
