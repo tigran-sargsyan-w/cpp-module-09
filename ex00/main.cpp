@@ -1,6 +1,12 @@
 #include "BitcoinExchange.hpp"
 #include <iostream>
 
+/**
+ * @brief Entry point for the BitcoinExchange program.
+ * @param argc Number of command-line arguments.
+ * @param argv Command-line argument values.
+ * @return Exit status code.
+ */
 int	main(int argc, char **argv)
 {
 	BitcoinExchange	exchange;
