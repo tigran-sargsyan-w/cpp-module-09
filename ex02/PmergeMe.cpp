@@ -1,17 +1,33 @@
 #include "PmergeMe.hpp"
 
+/**
+ * @brief Constructs an empty sorter.
+ */
 PmergeMe::PmergeMe() {}
 
+/**
+ * @brief Constructs sorter and parses input values.
+ * @param argv Null-terminated array of input strings.
+ */
 PmergeMe::PmergeMe(char **argv)
 {
 	parseInput(argv);
 }
 
+/**
+ * @brief Copy-constructs a sorter.
+ * @param other Source object to copy from.
+ */
 PmergeMe::PmergeMe(const PmergeMe &other)
 {
 	*this = other;
 }
 
+/**
+ * @brief Assigns sorter data from another instance.
+ * @param other Source object to assign from.
+ * @return Reference to this object.
+ */
 PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
 	if (this != &other)
@@ -22,8 +38,16 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 	return (*this);
 }
 
+/**
+ * @brief Destroys the sorter object.
+ */
 PmergeMe::~PmergeMe() {}
 
+/**
+ * @brief Parses one positive integer from text.
+ * @param text Input text.
+ * @return Parsed integer value.
+ */
 int	PmergeMe::parsePositiveInt(const std::string &text)
 {
 	long value;
@@ -41,6 +65,10 @@ int	PmergeMe::parsePositiveInt(const std::string &text)
 	return (static_cast<int>(value));
 }
 
+/**
+ * @brief Parses all arguments and fills internal containers.
+ * @param argv Null-terminated array of numeric strings.
+ */
 void PmergeMe::parseInput(char **argv)
 {
 	int	value;
@@ -56,6 +84,9 @@ void PmergeMe::parseInput(char **argv)
 	}
 }
 
+/**
+ * @brief Prints input sequence before sorting.
+ */
 void PmergeMe::printBefore(void) const
 {
 	std::size_t	index;
@@ -72,6 +103,10 @@ void PmergeMe::printBefore(void) const
 	std::cout << std::endl;
 }
 
+/**
+ * @brief Prints resulting sorted sequence.
+ * @param sorted Sorted vector to print.
+ */
 void PmergeMe::printAfter(const std::vector<int> &sorted) const
 {
 	std::size_t	index;
@@ -88,6 +123,13 @@ void PmergeMe::printAfter(const std::vector<int> &sorted) const
 	std::cout << std::endl;
 }
 
+/**
+ * @brief Finds lower-bound position in vector prefix.
+ * @param chain Sorted chain.
+ * @param end Exclusive search end index.
+ * @param value Value to insert.
+ * @return Insertion position.
+ */
 int	PmergeMe::lowerBoundVector(const std::vector<int> &chain, int end, int value)
 {
 	int	left;
@@ -107,6 +149,13 @@ int	PmergeMe::lowerBoundVector(const std::vector<int> &chain, int end, int value
 	return (left);
 }
 
+/**
+ * @brief Finds lower-bound position in deque prefix.
+ * @param chain Sorted chain.
+ * @param end Exclusive search end index.
+ * @param value Value to insert.
+ * @return Insertion position.
+ */
 int	PmergeMe::lowerBoundDeque(const std::deque<int> &chain, int end, int value)
 {
 	int	left;
@@ -126,6 +175,12 @@ int	PmergeMe::lowerBoundDeque(const std::deque<int> &chain, int end, int value)
 	return (left);
 }
 
+/**
+ * @brief Finds position of a value in vector chain.
+ * @param chain Data sequence.
+ * @param value Value to search.
+ * @return Found index or -1.
+ */
 int	PmergeMe::findPositionVector(const std::vector<int> &chain, int value)
 {
 	std::size_t	index;
@@ -140,6 +195,12 @@ int	PmergeMe::findPositionVector(const std::vector<int> &chain, int value)
 	return (-1);
 }
 
+/**
+ * @brief Finds position of a value in deque chain.
+ * @param chain Data sequence.
+ * @param value Value to search.
+ * @return Found index or -1.
+ */
 int	PmergeMe::findPositionDeque(const std::deque<int> &chain, int value)
 {
 	std::size_t	index;
@@ -154,6 +215,13 @@ int	PmergeMe::findPositionDeque(const std::deque<int> &chain, int value)
 	return (-1);
 }
 
+/**
+ * @brief Builds ordered pairs from vector input.
+ * @param data Source data.
+ * @param hasOdd Set to true if one value is unpaired.
+ * @param oddValue Stores the unpaired value.
+ * @return Container of normalized pairs.
+ */
 std::vector<PmergeMe::Pair> PmergeMe::makePairsVector(const std::vector<int> &data, bool &hasOdd, int &oddValue)
 {
 	std::vector<Pair> pairs;
@@ -186,6 +254,13 @@ std::vector<PmergeMe::Pair> PmergeMe::makePairsVector(const std::vector<int> &da
 	return (pairs);
 }
 
+/**
+ * @brief Builds ordered pairs from deque input.
+ * @param data Source data.
+ * @param hasOdd Set to true if one value is unpaired.
+ * @param oddValue Stores the unpaired value.
+ * @return Container of normalized pairs.
+ */
 std::deque<PmergeMe::Pair> PmergeMe::makePairsDeque(const std::deque<int> &data, bool &hasOdd, int &oddValue)
 {
 	std::deque<Pair> pairs;
@@ -218,6 +293,11 @@ std::deque<PmergeMe::Pair> PmergeMe::makePairsDeque(const std::deque<int> &data,
 	return (pairs);
 }
 
+/**
+ * @brief Sorts vector pairs by their larger element.
+ * @param pairs Input pair sequence.
+ * @return Sorted pair sequence.
+ */
 std::vector<PmergeMe::Pair> PmergeMe::sortPairsVector(const std::vector<Pair> &pairs)
 {
 	std::vector<Pair> left;
@@ -272,6 +352,11 @@ std::vector<PmergeMe::Pair> PmergeMe::sortPairsVector(const std::vector<Pair> &p
 	return (result);
 }
 
+/**
+ * @brief Sorts deque pairs by their larger element.
+ * @param pairs Input pair sequence.
+ * @return Sorted pair sequence.
+ */
 std::deque<PmergeMe::Pair> PmergeMe::sortPairsDeque(const std::deque<Pair> &pairs)
 {
 	std::deque<Pair> left;
@@ -326,6 +411,11 @@ std::deque<PmergeMe::Pair> PmergeMe::sortPairsDeque(const std::deque<Pair> &pair
 	return (result);
 }
 
+/**
+ * @brief Builds Jacobsthal-based insertion order for vector mode.
+ * @param lastIndex Last pair index to insert.
+ * @return Sequence of pair indices.
+ */
 std::vector<int> PmergeMe::buildInsertionOrderVector(int lastIndex)
 {
 	std::vector<int> order;
@@ -373,6 +463,11 @@ std::vector<int> PmergeMe::buildInsertionOrderVector(int lastIndex)
 	return (order);
 }
 
+/**
+ * @brief Builds Jacobsthal-based insertion order for deque mode.
+ * @param lastIndex Last pair index to insert.
+ * @return Sequence of pair indices.
+ */
 std::deque<int>	PmergeMe::buildInsertionOrderDeque(int lastIndex)
 {
 	std::deque<int>	order;
@@ -420,6 +515,11 @@ std::deque<int>	PmergeMe::buildInsertionOrderDeque(int lastIndex)
 	return (order);
 }
 
+/**
+ * @brief Sorts data with Ford-Johnson algorithm using vector.
+ * @param data Input sequence.
+ * @return Sorted sequence.
+ */
 std::vector<int> PmergeMe::fordJohnsonVector(const std::vector<int> &data)
 {
 	std::vector<Pair> pairs;
@@ -469,6 +569,11 @@ std::vector<int> PmergeMe::fordJohnsonVector(const std::vector<int> &data)
 	return (chain);
 }
 
+/**
+ * @brief Sorts data with Ford-Johnson algorithm using deque.
+ * @param data Input sequence.
+ * @return Sorted sequence.
+ */
 std::deque<int>	PmergeMe::fordJohnsonDeque(const std::deque<int> &data)
 {
 	std::deque<Pair> pairs;
@@ -518,6 +623,11 @@ std::deque<int>	PmergeMe::fordJohnsonDeque(const std::deque<int> &data)
 	return (chain);
 }
 
+/**
+ * @brief Checks whether vector data is nondecreasing.
+ * @param data Sequence to validate.
+ * @return True if sorted, otherwise false.
+ */
 bool PmergeMe::isSortedVector(const std::vector<int> &data) const
 {
 	std::size_t	index;
@@ -534,6 +644,11 @@ bool PmergeMe::isSortedVector(const std::vector<int> &data) const
 	return (true);
 }
 
+/**
+ * @brief Checks whether deque data is nondecreasing.
+ * @param data Sequence to validate.
+ * @return True if sorted, otherwise false.
+ */
 bool PmergeMe::isSortedDeque(const std::deque<int> &data) const
 {
 	std::size_t	index;
@@ -550,6 +665,9 @@ bool PmergeMe::isSortedDeque(const std::deque<int> &data) const
 	return (true);
 }
 
+/**
+ * @brief Runs sorting for both containers and prints timing.
+ */
 void PmergeMe::process(void)
 {
 	std::vector<int> sortedVector;
