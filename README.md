@@ -1,7 +1,7 @@
 # C++ Module 09 – STL 📚⚙️
 
-✅ **Status**: Completed – all mandatory exercises
-🏫 **School**: 42 – C++ Modules (Module 09)
+✅ **Status**: Completed – all mandatory exercises  
+🏫 **School**: 42 – C++ Modules (Module 09)  
 🏅 **Score**: (score)/100
 
 > *STL containers, parsing, stack-based evaluation, container choice, and merge-insert sorting with Ford–Johnson.*
