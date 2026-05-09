@@ -49,7 +49,7 @@ bool	RPN::isOperator(const std::string& token) const
  */
 bool	RPN::isDigitToken(const std::string& token) const
 {
-	return (token.length() == 1 && std::isdigit(token[0]));
+	return (token.length() == 1 && std::isdigit(static_cast<unsigned char>(token[0])));
 }
 
 /**
@@ -88,6 +88,9 @@ int	RPN::evaluate(const std::string& expression)
 	int					left;
 	int					right;
 	int					result;
+
+	while (!numbers.empty())
+		numbers.pop();
 
 	while (stream >> token)
 	{
