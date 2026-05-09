@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <cctype>
 
 /**
  * @brief Constructs an empty BitcoinExchange object.
