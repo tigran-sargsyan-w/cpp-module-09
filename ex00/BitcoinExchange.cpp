@@ -45,10 +45,10 @@ std::string	BitcoinExchange::trim(const std::string &text) const
 	std::string::size_type	end;
 
 	start = 0;
-	while (start < text.length() && std::isspace(text[start]))
+	while (start < text.length() && std::isspace(static_cast<unsigned char>(text[start])))
 		start++;
 	end = text.length();
-	while (end > start && std::isspace(text[end - 1]))
+	while (end > start && std::isspace(static_cast<unsigned char>(text[end - 1])))
 		end--;
 	return (text.substr(start, end - start));
 }
@@ -127,6 +127,8 @@ bool	BitcoinExchange::isValidValue(const std::string &valueText, double &value) 
 		return (false);
 	value = std::strtod(text.c_str(), &end);
 	if (*end != '\0')
+		return (false);
+	if (value != value)
 		return (false);
 	return (true);
 }
