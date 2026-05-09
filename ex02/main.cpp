@@ -12,8 +12,8 @@ int	main(int argc, char **argv)
 	{
 		if (argc < 2)
 			throw std::runtime_error("Error");
-		PmergeMe sorter(argv + 1);
-		sorter.process();
+		PmergeMe sorter;
+		sorter.process(argv + 1);
 	}
 	catch (const std::exception &e)
 	{

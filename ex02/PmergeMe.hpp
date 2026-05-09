@@ -24,15 +24,15 @@ class PmergeMe
 
   public:
 	PmergeMe();
-	PmergeMe(char **argv);
 	PmergeMe(const PmergeMe &other);
 	PmergeMe &operator=(const PmergeMe &other);
 	~PmergeMe();
 
-	void process(void);
+	void process(char **argv);
 
   private:
-	void parseInput(char **argv);
+	void parseInputVector(char **argv);
+	void parseInputDeque(char **argv);
 	int parsePositiveInt(const std::string &text);
 
 	void printBefore(void) const;

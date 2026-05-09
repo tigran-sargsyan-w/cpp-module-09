@@ -6,15 +6,6 @@
 PmergeMe::PmergeMe() {}
 
 /**
- * @brief Constructs sorter and parses input values.
- * @param argv Null-terminated array of input strings.
- */
-PmergeMe::PmergeMe(char **argv)
-{
-	parseInput(argv);
-}
-
-/**
  * @brief Copy-constructs a sorter.
  * @param other Source object to copy from.
  */
@@ -66,19 +57,38 @@ int	PmergeMe::parsePositiveInt(const std::string &text)
 }
 
 /**
- * @brief Parses all arguments and fills internal containers.
+ * @brief Parses input values for vector container.
  * @param argv Null-terminated array of numeric strings.
  */
-void PmergeMe::parseInput(char **argv)
+void PmergeMe::parseInputVector(char **argv)
 {
 	int	value;
 	int	index;
 
+	vectorData.clear();
 	index = 0;
 	while (argv[index] != NULL)
 	{
 		value = parsePositiveInt(argv[index]);
 		vectorData.push_back(value);
+		index++;
+	}
+}
+
+/**
+ * @brief Parses input values for deque container.
+ * @param argv Null-terminated array of numeric strings.
+ */
+void PmergeMe::parseInputDeque(char **argv)
+{
+	int	value;
+	int	index;
+
+	dequeData.clear();
+	index = 0;
+	while (argv[index] != NULL)
+	{
+		value = parsePositiveInt(argv[index]);
 		dequeData.push_back(value);
 		index++;
 	}
@@ -667,8 +677,9 @@ bool PmergeMe::isSortedDeque(const std::deque<int> &data) const
 
 /**
  * @brief Runs sorting for both containers and prints timing.
+ * @param argv Command-line argument values.
  */
-void PmergeMe::process(void)
+void PmergeMe::process(char **argv)
 {
 	std::vector<int> sortedVector;
 	std::deque<int>	sortedDeque;
@@ -679,20 +690,30 @@ void PmergeMe::process(void)
 	double timeVec;
 	double timeDeq;
 
+	parseInputVector(argv);
 	printBefore();
+
+	vectorData.clear();
 	startVec = clock();
+	parseInputVector(argv);
 	sortedVector = fordJohnsonVector(vectorData);
 	endVec = clock();
+
 	startDeq = clock();
+	parseInputDeque(argv);
 	sortedDeque = fordJohnsonDeque(dequeData);
 	endDeq = clock();
+
 	if (!isSortedVector(sortedVector) || !isSortedDeque(sortedDeque))
 		throw std::runtime_error("Error");
+
 	printAfter(sortedVector);
+
 	timeVec = static_cast<double>(endVec - startVec)
 		/ CLOCKS_PER_SEC * 1000000.0;
 	timeDeq = static_cast<double>(endDeq - startDeq)
 		/ CLOCKS_PER_SEC * 1000000.0;
+
 	std::cout << "Time to process a range of "
 		<< vectorData.size()
 		<< " elements with std::vector : "
